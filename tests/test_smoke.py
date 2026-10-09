@@ -15,3 +15,11 @@ def test_unknown():
 
 def test_empty():
     assert reply("   ") == "Please type a question."
+
+
+def test_hello_greeting():
+    assert "Hello" in reply("hello")
+
+
+def test_office_lookup_case_insensitive():
+    assert "I.101" in reply("WHERE IS THE TRAINING OFFICE?")
