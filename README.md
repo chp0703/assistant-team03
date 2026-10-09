@@ -2,8 +2,17 @@
 
 A starter repository for the CSC10014 Smart Virtual Assistant project.
 
-## Setup
+## Team Information
 
+- **Class:** 25C02
+- **Team:** 03
+
+## Prerequisites
+
+- Python >= 3.10
+- Git
+
+## Setup
  
 Prerequisites: Python 3.10+, Git. 
   
@@ -21,7 +30,7 @@ Prerequisites: Python 3.10+, Git.
 
   
 ## Test 
-    pytest -q                              # -> 4 passed 
+    pytest -q                         
 
   
 ## Troubleshooting 
