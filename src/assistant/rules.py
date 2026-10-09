@@ -1,4 +1,4 @@
-"""A tiny rule-based responder. No AI yet — that comes in Week 4."""
+"""Starter rule-based responder for greetings and office information."""
 from __future__ import annotations
 
 import csv
