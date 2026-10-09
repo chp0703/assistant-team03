@@ -1,13 +1,16 @@
 """Run the starter assistant with a question, or interactively without arguments."""
-import sys
+import argparse
 
-from assistant.rules import reply
+from assistant import __version__, reply
 
 
 def main(argv: list[str] | None = None) -> int:
-    argv = sys.argv[1:] if argv is None else argv
-    if argv:
-        print(reply(" ".join(argv)))
+    parser = argparse.ArgumentParser(prog="assistant", description="Starter study assistant.")
+    parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
+    parser.add_argument("question", nargs="*", help="Question to ask; omit for interactive mode.")
+    args = parser.parse_args(argv)
+    if args.question:
+        print(reply(" ".join(args.question)))
         return 0
     print("Study assistant (starter). Type 'quit' to exit.")
     while True:
