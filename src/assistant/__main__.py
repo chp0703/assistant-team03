@@ -1,4 +1,4 @@
-"""Run the starter assistant:  python -m assistant "where is the training office?" """
+"""Run the starter assistant with a question, or interactively without arguments."""
 import sys
 
 from assistant.rules import reply
