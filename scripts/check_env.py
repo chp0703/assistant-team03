@@ -3,6 +3,9 @@
 
 Run from the repository root:  python scripts/check_env.py
 """
+
+
+
 from __future__ import annotations
 
 import importlib.util
