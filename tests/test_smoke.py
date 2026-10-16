@@ -23,3 +23,11 @@ def test_hello_greeting():
 
 def test_office_lookup_case_insensitive():
     assert "I.101" in reply("WHERE IS THE TRAINING OFFICE?")
+def test_partial_office_name():
+    assert "I.101" in reply("where is training")
+
+
+def test_partial_student_affairs():
+    assert "I.102" in reply("where is student")
+def test_partial_helpdesk():
+    assert "E.005" in reply("where is helpdesk")
