@@ -22,7 +22,7 @@ def run_benchmark():
         for row in reader:
             total += 1
             question = row.get("question", "")
-            expected = row.get("expected_answer", "")
+            expected = row.get("expected") or row.get("expected_answer") or ""
             
             response = reply(question)
             
