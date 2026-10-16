@@ -127,8 +127,6 @@ this static HTML prototype.
 
 ## 7. Screenshot
 
-## 7. Screenshot
-
 The following screenshot demonstrates the Lab 02 chat UI prototype.
 
 ![Chat UI Placeholder](../docs/chat-page-placeholder.png)
