@@ -24,9 +24,16 @@ Prerequisites: Python 3.10+, Git.
     pip install -e .
 
   
-## Run 
-    python -m assistant "where is the library?" 
-    # -> Library: room B.201, open Mon-Sat 07:00-20:00.
+## Run
+
+Run the assistant from the terminal:
+
+```bash
+python -m assistant "where is the library?"
+# -> Library: room B.201, open Mon-Sat 07:00-20:00.
+
+python -m assistant "help"
+# -> I can help you find university offices, their room numbers, and opening hours. Try asking 'Where is the Training Office?'
 
   
 ## Test 

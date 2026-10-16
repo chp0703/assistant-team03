@@ -23,6 +23,13 @@ def reply(message: str, offices: dict[str, dict[str, str]] | None = None) -> str
     if text in GREETINGS:
         return "Hello! Ask me where an office is, or when it opens."
     offices = offices if offices is not None else load_offices()
+
+    if text == "help":
+        return (
+            "I can help you find university offices, "
+            "their room numbers, and opening hours. "
+            "Try asking 'Where is the Training Office?'"
+        )
     for name, row in offices.items():
         if name in text:
             return f"{row['name']}: room {row['room']}, open {row['hours']}."
