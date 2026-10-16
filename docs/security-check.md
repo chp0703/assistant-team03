@@ -13,7 +13,7 @@ Checked on 2026-10-16.
 
 ## Results
 
-- **Secrets:** Gitleaks reported no leaks in the 15 commits scanned. The manual review also found no API keys, passwords, access tokens, or private keys in the current files.
+- **Secrets:** Gitleaks reported no leaks in the repository history. The manual review also found no API keys, passwords, access tokens, or private keys in the current files.
 - **Personal information:** The previous `docs/team.md` listed team members' names and student numbers. This change removes that roster from the current tree.
 - **Git history:** The earlier roster remains in existing Git history. This change does not rewrite shared history; repository maintainers would need to coordinate any history cleanup separately.
 
