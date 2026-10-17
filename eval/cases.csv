@@ -1,0 +1,16 @@
+question,expected,category
+where is training,I.101,normal
+training office room,I.101,normal
+where is student affairs,I.102,normal
+student affairs office,I.102,normal
+where is library,B.201,normal
+library hours,07:00-20:00,normal
+it helpdesk location,E.005,normal
+it helpdesk hours,08:00-17:00,normal
+phòng đào tạo ở đâu,I.101,normal
+traintrain office,I.101,edge
+TRAINING OFFICE,I.101,edge
+WHERE IS LIBRARY?,B.201,edge
+who is the principal,sorry,out-of-scope
+what is the weather today,sorry,out-of-scope
+how to cook rice,sorry,out-of-scope
