@@ -31,3 +31,9 @@ def test_new_office_lookup():
 def test_new_office_lookup_case_insensitive():
     assert "C.102" in reply("where is the international office?")
 
+def test_new_office_lookup():
+    assert "A.201" in reply("Where is the Finance Office?")
+
+
+def test_new_office_lookup_case_insensitive():
+    assert "C.102" in reply("where is the international office?")
