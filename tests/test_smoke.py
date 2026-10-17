@@ -29,5 +29,17 @@ def test_help():
     assert "offices" in response
     assert "room numbers" in response
     assert "opening hours" in response
+    
+    
 def test_help_case_insensitive():
     assert reply("HELP") == reply("help")
+def test_partial_office_name():
+    assert "I.101" in reply("where is training")
+
+
+def test_partial_student_affairs():
+    assert "I.102" in reply("where is student")
+    
+    
+def test_partial_helpdesk():
+    assert "E.005" in reply("where is helpdesk")
