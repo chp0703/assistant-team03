@@ -34,10 +34,27 @@ python -m assistant "where is the library?"
 
 python -m assistant "help"
 # -> I can help you find university offices, their room numbers, and opening hours. Try asking 'Where is the Training Office?'
+```
 
 ## Test
 
-    pytest -q
+```bash
+pip install -r requirements-dev.txt
+pytest -q
+```
+
+The Lab 4 API contract tests are in `tests/test_api.py`. They use
+`httpx.AsyncClient` with an in-process ASGI transport and are skipped until the
+Lab 4 application module is merged. If the application is exposed from a
+different module, set `ASSISTANT_API_MODULE` to its import path before running
+pytest.
+
+To check a running API, import
+`api-tests/assistant-api.postman_collection.json` into Postman or run:
+
+```bash
+python scripts/test_api_urls.py --base-url http://127.0.0.1:8000
+```
 
 ## Troubleshooting
 

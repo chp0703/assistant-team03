@@ -1,0 +1,132 @@
+{
+  "info": {
+    "_postman_id": "61bc9224-cb45-42d8-9259-42c4468d9b7e",
+    "name": "Team 03 - Assistant API Lab 4",
+    "description": "Health, chat, feedback, and weather checks for the Team 03 Assistant API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/health"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('JSON response', () => pm.response.to.be.json);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Chat",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"Thư viện ở đâu?\"\n}"
+        },
+        "url": "{{baseUrl}}/v1/chat"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Response has an answer', () => {",
+              "  const body = pm.response.json();",
+              "  pm.expect(body.answer || body.reply || body.response || body.message).to.be.a('string').and.not.empty;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Feedback",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message_id\": \"{{$guid}}\",\n  \"rating\": 5,\n  \"comment\": \"Câu trả lời hữu ích\"\n}"
+        },
+        "url": "{{baseUrl}}/v1/feedback"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Feedback accepted', () => pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]));",
+              "pm.test('JSON response', () => pm.response.to.be.json);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Weather",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/weather?city=Ho%20Chi%20Minh%20City",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "weather"
+          ],
+          "query": [
+            {
+              "key": "city",
+              "value": "Ho Chi Minh City"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('JSON response', () => pm.response.to.be.json);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ]
+}

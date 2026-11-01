@@ -7,6 +7,7 @@ from pathlib import Path
 DATA_DIR = Path(__file__).resolve().parents[2] / "data"
 
 GREETINGS = {"hi", "hello", "hey", "xin chao", "chao", "xin chào", "chào"}
+GENERIC_OFFICE_WORDS = {"office"}
 
 
 def load_offices(path: Path = DATA_DIR / "offices.csv") -> dict[str, dict[str, str]]:
@@ -36,7 +37,11 @@ def reply(message: str, offices: dict[str, dict[str, str]] | None = None) -> str
             return f"{row['name']}: room {row['room']}, open {row['hours']}."
 
         # Match a meaningful part of the office name
-        words = [word for word in name.split() if len(word) > 3]
+        words = [
+            word
+            for word in name.split()
+            if len(word) > 3 and word not in GENERIC_OFFICE_WORDS
+        ]
 
         if any(word in text.split() for word in words):
             return f"{row['name']}: room {row['room']}, open {row['hours']}."
