@@ -43,3 +43,24 @@ def test_u3_typing_does_not_reset_counter():
     at.button[0].click().run()
     at.text_input[0].input("An").run()  # another re-run, no click
     assert "Clicked 1 times" in [m.value for m in at.markdown]
+
+
+def test_u4_default_load_is_normal():
+    at = run_app()
+    assert at.number_input[0].value == 18
+    assert at.info[0].value == "18 credits is a normal load."
+    assert len(at.error) == 0
+
+
+def test_u4_boundary_30_is_still_normal():
+    at = run_app()
+    at.number_input[0].set_value(30).run()
+    assert at.info[0].value == "30 credits is a normal load."
+    assert len(at.error) == 0
+
+
+def test_u4_more_than_30_needs_approval():
+    at = run_app()
+    at.number_input[0].set_value(31).run()
+    assert at.error[0].value == "More than 30 credits needs advisor approval."
+    assert len(at.info) == 0

@@ -28,3 +28,13 @@ if "count" not in st.session_state:
 if st.button("Click me"):
     st.session_state.count += 1
 st.write(f"Clicked {st.session_state.count} times")
+
+# U4 — validate input and give feedback the user can understand
+st.header("U4 — Validate input")
+credits = st.number_input(
+    "Credits this semester", min_value=0, max_value=40, value=18, step=1
+)
+if credits > 30:
+    st.error("More than 30 credits needs advisor approval.")
+else:
+    st.info(f"{credits} credits is a normal load.")
