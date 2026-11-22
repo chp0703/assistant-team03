@@ -28,3 +28,18 @@ def test_u2_blank_name_shows_no_greeting():
     at = run_app()
     at.text_input[0].input("   ").run()
     assert len(at.success) == 0
+
+
+def test_u3_counter_survives_reruns():
+    at = run_app()
+    assert "Clicked 0 times" in [m.value for m in at.markdown]
+    at.button[0].click().run()
+    at.button[0].click().run()
+    assert "Clicked 2 times" in [m.value for m in at.markdown]
+
+
+def test_u3_typing_does_not_reset_counter():
+    at = run_app()
+    at.button[0].click().run()
+    at.text_input[0].input("An").run()  # another re-run, no click
+    assert "Clicked 1 times" in [m.value for m in at.markdown]

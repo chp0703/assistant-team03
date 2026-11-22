@@ -18,3 +18,13 @@ st.header("U2 — React to input")
 name = st.text_input("Your name")
 if name.strip():
     st.success(f"Hello, {name.strip()}!")
+
+# U3 — remember things with session_state.
+# A normal variable (count = 0) would be reset on every re-run;
+# st.session_state survives re-runs (one per browser tab).
+st.header("U3 — Remember things")
+if "count" not in st.session_state:
+    st.session_state.count = 0
+if st.button("Click me"):
+    st.session_state.count += 1
+st.write(f"Clicked {st.session_state.count} times")
